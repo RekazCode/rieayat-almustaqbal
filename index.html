@@ -557,16 +557,101 @@
         }
 
         /* استجابة الهاتف (Responsive) */
+        
+        /* زر القائمة للموبايل */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 6px 0;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
             .nav-container {
-                flex-direction: column;
-                gap: 20px;
+                position: relative;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--white);
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: var(--transition);
+                padding-top: 80px;
+                z-index: 999;
+            }
+
+            nav.active {
+                right: 0;
             }
 
             nav ul {
                 flex-direction: column;
                 align-items: center;
-                gap: 15px;
+                gap: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 18px 20px;
+                font-size: 1.1rem;
+            }
+
+            nav ul li a:hover {
+                background-color: var(--light-bg);
+            }
+
+            /* طبقة التعتيم خلف القائمة */
+            .nav-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+                z-index: 998;
+            }
+
+            .nav-overlay.active {
+                display: block;
             }
 
             .hero-content h1 {
@@ -583,6 +668,60 @@
                 display: block;
                 width: 100%;
             }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .info-grid,
+            .services-grid,
+            .products-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-col h3::after {
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+
+            .footer-contact li {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo img {
+                height: 40px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .btn-gold,
+            .btn-outline {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -595,7 +734,15 @@
                 <img src="logo.png" alt="رعاية المستقبل" style="height: 50px;">
                 رعاية المستقبل
             </div>
-            <nav>
+            
+            <!-- زر القائمة للموبايل -->
+            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#about">من نحن</a></li>
@@ -604,6 +751,9 @@
                     <li><a href="#contact">تواصل معنا</a></li>
                 </ul>
             </nav>
+            
+            <!-- طبقة التعتيم -->
+            <div class="nav-overlay" id="navOverlay"></div>
         </div>
     </header>
 
@@ -858,6 +1008,40 @@
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript للقائمة المتجاوبة -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const navOverlay = document.getElementById('navOverlay');
+        const navLinks = mainNav.querySelectorAll('a');
+
+        // فتح/إغلاق القائمة
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // إغلاق القائمة عند الضغط على الطبقة المعتمة
+        navOverlay.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // إغلاق القائمة عند الضغط على أي رابط
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
 
 </body>
 </html>
