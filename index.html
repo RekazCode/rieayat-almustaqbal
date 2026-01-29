@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رعاية المستقبل | لاستيراد المعدات الطبية ومستلزمات الأم والطفل</title>
+    
+    <!-- استدعاء خط Cairo للغة العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* المتغيرات الأساسية للألوان */
+        :root {
+            --primary-color: #0f2c45; /* كحلي داكن فاخر */
+            --secondary-color: #1a4b70; /* درجة أفتح قليلاً */
+            --accent-color: #c5a059; /* ذهبي مطفي */
+            --text-color: #333333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        /* تنسيقات عامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .section-padding {
+            padding: 90px 0;
+        }
+
+        /* الهيدر (رأس الصفحة) */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid var(--primary-color);
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        /* قسم الغلاف (Hero Section) */
+        .hero {
+            height: 90vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(15, 44, 69, 0.85), rgba(15, 44, 69, 0.7)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* تأثير جميل عند التمرير */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: inline-block;
+            transition: var(--transition);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: inline-block;
+            transition: var(--transition);
+            border: 2px solid var(--white);
+            margin-right: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* قسم الإحصائيات (جديد) */
+        .stats-section {
+            background-color: var(--accent-color);
+            padding: 40px 0;
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* قسم من نحن (About) */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--light-bg);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            background: var(--white);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .info-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* قسم الخدمات (جديد) */
+        .services-section {
+            background-color: #f4f6f8;
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(15, 44, 69, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* قسم المنتجات */
+        .products-section {
+            background-color: var(--white);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid #f0f0f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            background-color: #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 30px;
+        }
+
+        .product-cat {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .product-info h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        /* قسم لماذا تختارنا (جديد) */
+        .features-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            position: relative;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-box {
+            text-align: center;
+        }
+
+        .feature-box i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .feature-box p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        /* قسم آراء العملاء (جديد) */
+        .testimonials-section {
+            background-color: #f9f9f9;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--accent-color);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .client-info h4 {
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .client-info span {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* شريط الدعوة (CTA) */
+        .cta-section {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            padding: 60px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        /* الفوتر (Footer) */
+        footer {
+            background-color: #0b1e2f; /* أغمق قليلاً من الأساسي */
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .footer-about p {
+            opacity: 0.7;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .footer-contact li {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            width: 25px;
+        }
+
+        .footer-contact a:hover {
+            color: var(--accent-color);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* استجابة الهاتف (Responsive) */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .btn-outline {
+                margin-right: 0;
+                margin-top: 15px;
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="رعاية المستقبل" style="height: 50px;">
+                رعاية المستقبل
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#products">المنتجات</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- قسم الغلاف -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>رعاية المستقبل<br><span style="font-size: 0.6em; font-weight: 400;">الجسر الآمن لأحدث التقنيات الطبية</span></h1>
+            <p>شريككم الموثوق في استيراد أحدث المعدات الطبية ومستلزمات الأم والطفل. نجمع بين التكنولوجيا العالمية والرعاية المحلية بأعلى معايير الجودة.</p>
+            <div style="margin-top: 30px;">
+                <a href="#products" class="btn-gold">تصفح المنتجات</a>
+                <a href="#about" class="btn-outline">اقرأ المزيد عنا</a>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- قسم من نحن والأهداف -->
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>هويتنا المؤسسية</h2>
+                <p>نسعى للتميز في كل ما نقدمه للقطاع الصحي الليبي</p>
+            </div>
+
+            <div class="info-grid">
+                <!-- نبذة عن الشركة -->
+                <div class="info-card">
+                    <i class="fa-solid fa-building"></i>
+                    <h3>نبذة عن الشركة</h3>
+                    <p>شركة ليبية رائدة متخصصة في استيراد وتوزيع المعدات الطبية عالية الجودة ومستلزمات رعاية الأم والطفل، نعمل كجسر وصل بين المصنعين العالميين والسوق المحلي.</p>
+                </div>
+
+                <!-- رسالتنا -->
+                <div class="info-card">
+                    <i class="fa-solid fa-scroll"></i>
+                    <h3>رسالتنا</h3>
+                    <p>توفير بيئة صحية آمنة من خلال تقديم منتجات موثوقة ومبتكرة تلبي احتياجات المستشفيات والأسر الليبية بأعلى معايير الجودة العالمية.</p>
+                </div>
+
+                <!-- رؤيتنا -->
+                <div class="info-card">
+                    <i class="fa-solid fa-eye"></i>
+                    <h3>رؤيتنا</h3>
+                    <p>أن نكون الخيار الأول والمرجع الأساسي في ليبيا لتجهيز العيادات والمستشفيات، والداعم الأول للأم والطفل في رحلة النمو.</p>
+                </div>
+
+                <!-- هدفنا -->
+                <div class="info-card">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h3>هدفنا</h3>
+                    <p>رفع مستوى الرعاية الصحية في البلاد، وتوفير حلول متكاملة تضمن راحة وسلامة المرضى والأمهات والأطفال بأسعار تنافسية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات (جديد) -->
+    <section id="services" class="services-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>خدماتنا المتكاملة</h2>
+                <p>لا نكتفي بالتوريد، بل نقدم حلولاً شاملة</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-truck-medical"></i>
+                    </div>
+                    <h3>التوريد والشحن</h3>
+                    <p>نضمن وصول المعدات الطبية ومستلزمات الأطفال بأمان وسرعة من أفضل المصانع العالمية إلى موقعكم.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3>التركيب والصيانة</h3>
+                    <p>فريق هندسي متخصص لتركيب الأجهزة الطبية وضمان تشغيلها بكفاءة، مع خدمات صيانة دورية.</p>
+                </div>
+
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات -->
+    <section id="products" class="products-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>منتجاتنا المميزة</h2>
+                <p>تشكيلة واسعة تلبي كافة الاحتياجات الطبية والعائلية</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- منتج 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="1.jpg" alt="منتج 1">
+                    </div>
+                </div>
+
+                <!-- منتج 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="2.jpg" alt="منتج 2">
+                    </div>
+                </div>
+
+                <!-- منتج 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="3.webp" alt="منتج 3">
+                    </div>
+                </div>
+
+                <!-- منتج 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="4.jpg" alt="منتج 4">
+                    </div>
+                </div>
+
+                <!-- منتج 5 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="5.jpg" alt="منتج 5">
+                    </div>
+                </div>
+
+                <!-- منتج 6 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="6.jpg" alt="منتج 6">
+                    </div>
+                </div>
+
+                <!-- منتج 7 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="7.jpg" alt="منتج 7">
+                    </div>
+                </div>
+
+                <!-- منتج 8 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="8.jpg" alt="منتج 8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم لماذا تختارنا (جديد) -->
+    <section class="features-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">لماذا تختار رعاية المستقبل؟</h2>
+                <p style="color: rgba(255,255,255,0.8);">قيمنا تميزنا عن الآخرين</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>جودة معتمدة</h3>
+                    <p>جميع منتجاتنا حاصلة على شهادات الجودة العالمية ISO و CE.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>سرعة في التوريد</h3>
+                    <p>نلتزم بالمواعيد المحددة للتسليم بفضل شبكتنا اللوجستية القوية.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <h3>أسعار تنافسية</h3>
+                    <p>نقدم أفضل قيمة مقابل السعر لضمان رضا عملائنا وتلبية ميزانياتهم.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3>خدمة ما بعد البيع</h3>
+                    <p>فريقنا متواجد دائماً للإجابة على استفساراتكم وتقديم الدعم الفني.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- دعوة للعمل (CTA) -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>هل أنت جاهز لتجهيز منشأتك الطبية؟</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص لاحتياجاتك.</p>
+            <a href="#contact" class="btn-outline">تواصل معنا الآن</a>
+        </div>
+    </section>
+
+    <!-- الفوتر ومعلومات التواصل -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="logo" style="margin-bottom: 20px; color: #fff;">
+                        <img src="logo.png" alt="رعاية المستقبل" style="height: 50px;">
+                        رعاية المستقبل
+                    </div>
+                    <p>نعمل بشغف لتأمين مستقبل صحي أفضل، من خلال منتجاتنا التي تجمع بين الجودة والأمان. نسعى دائماً لتطوير خدماتنا لتواكب التطور العالمي.</p>
+                    
+                </div>
+
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul style="line-height: 2.2;">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-contact">
+                    <h3>معلومات التواصل</h3>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>طرابلس، ليبيا - شارع عمر المختار</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:0919041164" dir="ltr">091 904 1164</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:0927013156" dir="ltr">092 701 3156</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@futurecare.ly">info@futurecare.ly</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            <span>السبت - الخميس: 9:00 ص - 8:00 م</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2026 شركة رعاية المستقبل لاستيراد المعدات الطبية.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
