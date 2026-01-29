@@ -723,6 +723,81 @@
                 font-size: 1rem;
             }
         }
+
+        /* زر تبديل اللغة */
+        .lang-switch {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lang-switch:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .lang-switch i {
+            font-size: 1rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .lang-switch {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+        }
+
+        /* تعديلات للغة الإنجليزية */
+        html[dir="ltr"] {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        html[dir="ltr"] .btn-outline {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+
+        html[dir="ltr"] .footer-col h3::after {
+            right: auto;
+            left: 0;
+        }
+
+        html[dir="ltr"] nav {
+            right: auto;
+            left: -100%;
+        }
+
+        html[dir="ltr"] nav.active {
+            left: 0;
+            right: auto;
+        }
+
+        @media (max-width: 768px) {
+            html[dir="ltr"] .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
     </style>
 </head>
 <body>
@@ -732,25 +807,33 @@
         <div class="container nav-container">
             <div class="logo">
                 <img src="logo.png" alt="رعاية المستقبل" style="height: 50px;">
-                رعاية المستقبل
+                <span data-ar="رعاية المستقبل" data-en="Future Care">رعاية المستقبل</span>
             </div>
-            
-            <!-- زر القائمة للموبايل -->
-            <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
             
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#about">من نحن</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#products">المنتجات</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                    <li><a href="#about" data-ar="من نحن" data-en="About Us">من نحن</a></li>
+                    <li><a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+                    <li><a href="#products" data-ar="المنتجات" data-en="Products">المنتجات</a></li>
+                    <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
                 </ul>
             </nav>
+            
+            <div class="header-actions">
+                <!-- زر تبديل اللغة -->
+                <button class="lang-switch" id="langSwitch">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>EN</span>
+                </button>
+                
+                <!-- زر القائمة للموبايل -->
+                <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
             
             <!-- طبقة التعتيم -->
             <div class="nav-overlay" id="navOverlay"></div>
@@ -760,11 +843,11 @@
     <!-- قسم الغلاف -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <h1>رعاية المستقبل<br><span style="font-size: 0.6em; font-weight: 400;">الجسر الآمن لأحدث التقنيات الطبية</span></h1>
-            <p>شريككم الموثوق في استيراد أحدث المعدات الطبية ومستلزمات الأم والطفل. نجمع بين التكنولوجيا العالمية والرعاية المحلية بأعلى معايير الجودة.</p>
+            <h1 data-ar="رعاية المستقبل" data-en="Future Care">رعاية المستقبل<br><span style="font-size: 0.6em; font-weight: 400;" data-ar="الجسر الآمن لأحدث التقنيات الطبية" data-en="Your Safe Bridge to Latest Medical Technologies">الجسر الآمن لأحدث التقنيات الطبية</span></h1>
+            <p data-ar="شريككم الموثوق في استيراد أحدث المعدات الطبية ومستلزمات الأم والطفل. نجمع بين التكنولوجيا العالمية والرعاية المحلية بأعلى معايير الجودة." data-en="Your trusted partner in importing the latest medical equipment and mother & child supplies. We combine global technology with local care at the highest quality standards.">شريككم الموثوق في استيراد أحدث المعدات الطبية ومستلزمات الأم والطفل. نجمع بين التكنولوجيا العالمية والرعاية المحلية بأعلى معايير الجودة.</p>
             <div style="margin-top: 30px;">
-                <a href="#products" class="btn-gold">تصفح المنتجات</a>
-                <a href="#about" class="btn-outline">اقرأ المزيد عنا</a>
+                <a href="#products" class="btn-gold" data-ar="تصفح المنتجات" data-en="Browse Products">تصفح المنتجات</a>
+                <a href="#about" class="btn-outline" data-ar="اقرأ المزيد عنا" data-en="Read More About Us">اقرأ المزيد عنا</a>
             </div>
         </div>
     </section>
@@ -775,37 +858,37 @@
     <section id="about" class="about-section section-padding">
         <div class="container">
             <div class="section-header">
-                <h2>هويتنا المؤسسية</h2>
-                <p>نسعى للتميز في كل ما نقدمه للقطاع الصحي الليبي</p>
+                <h2 data-ar="هويتنا المؤسسية" data-en="Our Corporate Identity">هويتنا المؤسسية</h2>
+                <p data-ar="نسعى للتميز في كل ما نقدمه للقطاع الصحي الليبي" data-en="We strive for excellence in everything we offer to the Libyan health sector">نسعى للتميز في كل ما نقدمه للقطاع الصحي الليبي</p>
             </div>
 
             <div class="info-grid">
                 <!-- نبذة عن الشركة -->
                 <div class="info-card">
                     <i class="fa-solid fa-building"></i>
-                    <h3>نبذة عن الشركة</h3>
-                    <p>شركة ليبية رائدة متخصصة في استيراد وتوزيع المعدات الطبية عالية الجودة ومستلزمات رعاية الأم والطفل، نعمل كجسر وصل بين المصنعين العالميين والسوق المحلي.</p>
+                    <h3 data-ar="نبذة عن الشركة" data-en="About the Company">نبذة عن الشركة</h3>
+                    <p data-ar="شركة ليبية رائدة متخصصة في استيراد وتوزيع المعدات الطبية عالية الجودة ومستلزمات رعاية الأم والطفل، نعمل كجسر وصل بين المصنعين العالميين والسوق المحلي." data-en="A leading Libyan company specialized in importing and distributing high-quality medical equipment and mother & child care supplies, serving as a bridge between global manufacturers and the local market.">شركة ليبية رائدة متخصصة في استيراد وتوزيع المعدات الطبية عالية الجودة ومستلزمات رعاية الأم والطفل، نعمل كجسر وصل بين المصنعين العالميين والسوق المحلي.</p>
                 </div>
 
                 <!-- رسالتنا -->
                 <div class="info-card">
                     <i class="fa-solid fa-scroll"></i>
-                    <h3>رسالتنا</h3>
-                    <p>توفير بيئة صحية آمنة من خلال تقديم منتجات موثوقة ومبتكرة تلبي احتياجات المستشفيات والأسر الليبية بأعلى معايير الجودة العالمية.</p>
+                    <h3 data-ar="رسالتنا" data-en="Our Mission">رسالتنا</h3>
+                    <p data-ar="توفير بيئة صحية آمنة من خلال تقديم منتجات موثوقة ومبتكرة تلبي احتياجات المستشفيات والأسر الليبية بأعلى معايير الجودة العالمية." data-en="Providing a safe and healthy environment by offering reliable and innovative products that meet the needs of Libyan hospitals and families with the highest international quality standards.">توفير بيئة صحية آمنة من خلال تقديم منتجات موثوقة ومبتكرة تلبي احتياجات المستشفيات والأسر الليبية بأعلى معايير الجودة العالمية.</p>
                 </div>
 
                 <!-- رؤيتنا -->
                 <div class="info-card">
                     <i class="fa-solid fa-eye"></i>
-                    <h3>رؤيتنا</h3>
-                    <p>أن نكون الخيار الأول والمرجع الأساسي في ليبيا لتجهيز العيادات والمستشفيات، والداعم الأول للأم والطفل في رحلة النمو.</p>
+                    <h3 data-ar="رؤيتنا" data-en="Our Vision">رؤيتنا</h3>
+                    <p data-ar="أن نكون الخيار الأول والمرجع الأساسي في ليبيا لتجهيز العيادات والمستشفيات، والداعم الأول للأم والطفل في رحلة النمو." data-en="To be the first choice and primary reference in Libya for equipping clinics and hospitals, and the first supporter of mothers and children in their growth journey.">أن نكون الخيار الأول والمرجع الأساسي في ليبيا لتجهيز العيادات والمستشفيات، والداعم الأول للأم والطفل في رحلة النمو.</p>
                 </div>
 
                 <!-- هدفنا -->
                 <div class="info-card">
                     <i class="fa-solid fa-bullseye"></i>
-                    <h3>هدفنا</h3>
-                    <p>رفع مستوى الرعاية الصحية في البلاد، وتوفير حلول متكاملة تضمن راحة وسلامة المرضى والأمهات والأطفال بأسعار تنافسية.</p>
+                    <h3 data-ar="هدفنا" data-en="Our Goal">هدفنا</h3>
+                    <p data-ar="رفع مستوى الرعاية الصحية في البلاد، وتوفير حلول متكاملة تضمن راحة وسلامة المرضى والأمهات والأطفال بأسعار تنافسية." data-en="Elevating the level of healthcare in the country, providing comprehensive solutions that ensure comfort and safety for patients, mothers, and children at competitive prices.">رفع مستوى الرعاية الصحية في البلاد، وتوفير حلول متكاملة تضمن راحة وسلامة المرضى والأمهات والأطفال بأسعار تنافسية.</p>
                 </div>
             </div>
         </div>
@@ -815,8 +898,8 @@
     <section id="services" class="services-section section-padding">
         <div class="container">
             <div class="section-header">
-                <h2>خدماتنا المتكاملة</h2>
-                <p>لا نكتفي بالتوريد، بل نقدم حلولاً شاملة</p>
+                <h2 data-ar="خدماتنا المتكاملة" data-en="Our Integrated Services">خدماتنا المتكاملة</h2>
+                <p data-ar="لا نكتفي بالتوريد، بل نقدم حلولاً شاملة" data-en="We don't just supply, we provide comprehensive solutions">لا نكتفي بالتوريد، بل نقدم حلولاً شاملة</p>
             </div>
             
             <div class="services-grid">
@@ -824,16 +907,16 @@
                     <div class="service-icon">
                         <i class="fa-solid fa-truck-medical"></i>
                     </div>
-                    <h3>التوريد والشحن</h3>
-                    <p>نضمن وصول المعدات الطبية ومستلزمات الأطفال بأمان وسرعة من أفضل المصانع العالمية إلى موقعكم.</p>
+                    <h3 data-ar="التوريد والشحن" data-en="Supply & Shipping">التوريد والشحن</h3>
+                    <p data-ar="نضمن وصول المعدات الطبية ومستلزمات الأطفال بأمان وسرعة من أفضل المصانع العالمية إلى موقعكم." data-en="We ensure safe and fast delivery of medical equipment and child supplies from the best global factories to your location.">نضمن وصول المعدات الطبية ومستلزمات الأطفال بأمان وسرعة من أفضل المصانع العالمية إلى موقعكم.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                     </div>
-                    <h3>التركيب والصيانة</h3>
-                    <p>فريق هندسي متخصص لتركيب الأجهزة الطبية وضمان تشغيلها بكفاءة، مع خدمات صيانة دورية.</p>
+                    <h3 data-ar="التركيب والصيانة" data-en="Installation & Maintenance">التركيب والصيانة</h3>
+                    <p data-ar="فريق هندسي متخصص لتركيب الأجهزة الطبية وضمان تشغيلها بكفاءة، مع خدمات صيانة دورية." data-en="A specialized engineering team for installing medical devices and ensuring their efficient operation, with periodic maintenance services.">فريق هندسي متخصص لتركيب الأجهزة الطبية وضمان تشغيلها بكفاءة، مع خدمات صيانة دورية.</p>
                 </div>
 
               
@@ -845,8 +928,8 @@
     <section id="products" class="products-section section-padding">
         <div class="container">
             <div class="section-header">
-                <h2>منتجاتنا المميزة</h2>
-                <p>تشكيلة واسعة تلبي كافة الاحتياجات الطبية والعائلية</p>
+                <h2 data-ar="منتجاتنا المميزة" data-en="Our Featured Products"> تشكيلة من بعض منتجاتنا </h2>
+                <p data-ar="تشكيلة واسعة تلبي كافة الاحتياجات الطبية والعائلية" data-en="A wide selection to meet all medical and family needs">تشكيلة واسعة تلبي كافة الاحتياجات الطبية والعائلية</p>
             </div>
 
             <div class="products-grid">
@@ -913,29 +996,29 @@
     <section class="features-section section-padding">
         <div class="container">
             <div class="section-header">
-                <h2 style="color: white;">لماذا تختار رعاية المستقبل؟</h2>
-                <p style="color: rgba(255,255,255,0.8);">قيمنا تميزنا عن الآخرين</p>
+                <h2 style="color: white;" data-ar="لماذا تختار رعاية المستقبل؟" data-en="Why Choose Future Care?">لماذا تختار رعاية المستقبل؟</h2>
+                <p style="color: rgba(255,255,255,0.8);" data-ar="قيمنا تميزنا عن الآخرين" data-en="Our values distinguish us from others">قيمنا تميزنا عن الآخرين</p>
             </div>
             <div class="features-grid">
                 <div class="feature-box">
                     <i class="fa-solid fa-certificate"></i>
-                    <h3>جودة معتمدة</h3>
-                    <p>جميع منتجاتنا حاصلة على شهادات الجودة العالمية ISO و CE.</p>
+                    <h3 data-ar="جودة معتمدة" data-en="Certified Quality">جودة معتمدة</h3>
+                    <p data-ar="جميع منتجاتنا حاصلة على شهادات الجودة العالمية ISO و CE." data-en="All our products are certified with international quality standards ISO and CE.">جميع منتجاتنا حاصلة على شهادات الجودة العالمية ISO و CE.</p>
                 </div>
                 <div class="feature-box">
                     <i class="fa-solid fa-clock"></i>
-                    <h3>سرعة في التوريد</h3>
-                    <p>نلتزم بالمواعيد المحددة للتسليم بفضل شبكتنا اللوجستية القوية.</p>
+                    <h3 data-ar="سرعة في التوريد" data-en="Fast Delivery">سرعة في التوريد</h3>
+                    <p data-ar="نلتزم بالمواعيد المحددة للتسليم بفضل شبكتنا اللوجستية القوية." data-en="We commit to delivery schedules thanks to our strong logistics network.">نلتزم بالمواعيد المحددة للتسليم بفضل شبكتنا اللوجستية القوية.</p>
                 </div>
                 <div class="feature-box">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
-                    <h3>أسعار تنافسية</h3>
-                    <p>نقدم أفضل قيمة مقابل السعر لضمان رضا عملائنا وتلبية ميزانياتهم.</p>
+                    <h3 data-ar="أسعار تنافسية" data-en="Competitive Prices">أسعار تنافسية</h3>
+                    <p data-ar="نقدم أفضل قيمة مقابل السعر لضمان رضا عملائنا وتلبية ميزانياتهم." data-en="We offer the best value for money to ensure customer satisfaction and meet their budgets.">نقدم أفضل قيمة مقابل السعر لضمان رضا عملائنا وتلبية ميزانياتهم.</p>
                 </div>
                 <div class="feature-box">
                     <i class="fa-solid fa-headset"></i>
-                    <h3>خدمة ما بعد البيع</h3>
-                    <p>فريقنا متواجد دائماً للإجابة على استفساراتكم وتقديم الدعم الفني.</p>
+                    <h3 data-ar="خدمة ما بعد البيع" data-en="After-Sales Service">خدمة ما بعد البيع</h3>
+                    <p data-ar="فريقنا متواجد دائماً للإجابة على استفساراتكم وتقديم الدعم الفني." data-en="Our team is always available to answer your inquiries and provide technical support.">فريقنا متواجد دائماً للإجابة على استفساراتكم وتقديم الدعم الفني.</p>
                 </div>
             </div>
         </div>
@@ -946,9 +1029,9 @@
     <!-- دعوة للعمل (CTA) -->
     <section class="cta-section">
         <div class="container">
-            <h2>هل أنت جاهز لتجهيز منشأتك الطبية؟</h2>
-            <p style="margin-bottom: 30px; opacity: 0.9;">تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص لاحتياجاتك.</p>
-            <a href="#contact" class="btn-outline">تواصل معنا الآن</a>
+            <h2 data-ar="هل أنت جاهز لتجهيز منشأتك الطبية؟" data-en="Ready to Equip Your Medical Facility?">هل أنت جاهز لتجهيز منشأتك الطبية؟</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;" data-ar="تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص لاحتياجاتك." data-en="Contact us today for a free consultation and a customized quote for your needs.">تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص لاحتياجاتك.</p>
+            <a href="#contact" class="btn-outline" data-ar="تواصل معنا الآن" data-en="Contact Us Now">تواصل معنا الآن</a>
         </div>
     </section>
 
@@ -959,37 +1042,37 @@
                 <div class="footer-col footer-about">
                     <div class="logo" style="margin-bottom: 20px; color: #fff;">
                         <img src="logo.png" alt="رعاية المستقبل" style="height: 50px;">
-                        رعاية المستقبل
+                        <span data-ar="رعاية المستقبل" data-en="Future Care">رعاية المستقبل</span>
                     </div>
-                    <p>نعمل بشغف لتأمين مستقبل صحي أفضل، من خلال منتجاتنا التي تجمع بين الجودة والأمان. نسعى دائماً لتطوير خدماتنا لتواكب التطور العالمي.</p>
+                    <p data-ar="نعمل بشغف لتأمين مستقبل صحي أفضل، من خلال منتجاتنا التي تجمع بين الجودة والأمان. نسعى دائماً لتطوير خدماتنا لتواكب التطور العالمي." data-en="We work passionately to secure a better healthy future, through our products that combine quality and safety. We always strive to develop our services to keep up with global development.">نعمل بشغف لتأمين مستقبل صحي أفضل، من خلال منتجاتنا التي تجمع بين الجودة والأمان. نسعى دائماً لتطوير خدماتنا لتواكب التطور العالمي.</p>
                     
                 </div>
 
                 <div class="footer-col">
-                    <h3>روابط سريعة</h3>
+                    <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
                     <ul style="line-height: 2.2;">
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#about">من نحن</a></li>
-                        <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#products">المنتجات</a></li>
-                        <li><a href="#contact">اتصل بنا</a></li>
+                        <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                        <li><a href="#about" data-ar="من نحن" data-en="About Us">من نحن</a></li>
+                        <li><a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+                        <li><a href="#products" data-ar="المنتجات" data-en="Products">المنتجات</a></li>
+                        <li><a href="#contact" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col footer-contact">
-                    <h3>معلومات التواصل</h3>
+                    <h3 data-ar="معلومات التواصل" data-en="Contact Information">معلومات التواصل</h3>
                     <ul>
                         <li>
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>طرابلس، ليبيا - شارع عمر المختار</span>
+                            <span data-ar="طرابلس، ليبيا -   طريق المطار" data-en="Tripoli, Libya - Omar Al-Mukhtar Street">طرابلس، ليبيا - طريق المطار </span>
                         </li>
                         <li>
                             <i class="fa-solid fa-phone"></i>
-                            <a href="tel:0919041164" dir="ltr">091 904 1164</a>
+                            <a href="tel:0919041164" dir="ltr">+218 91 904 1164</a>
                         </li>
                         <li>
                             <i class="fa-solid fa-phone"></i>
-                            <a href="tel:0927013156" dir="ltr">092 701 3156</a>
+                            <a href="tel:0927013156" dir="ltr">+218 92 701 3156</a>
                         </li>
                         <li>
                             <i class="fa-solid fa-envelope"></i>
@@ -997,24 +1080,34 @@
                         </li>
                         <li>
                             <i class="fa-solid fa-clock"></i>
-                            <span>السبت - الخميس: 9:00 ص - 8:00 م</span>
+                            <span data-ar="السبت - الخميس: 9:00 ص - 8:00 م" data-en="Saturday - Thursday: 9:00 AM - 8:00 PM">السبت - الخميس: 9:00 ص - 8:00 م</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2026 شركة رعاية المستقبل لاستيراد المعدات الطبية.</p>
+                <p data-ar="جميع الحقوق محفوظة © 2026 شركة رعاية المستقبل لاستيراد المعدات الطبية." data-en="All rights reserved © 2026 Future Care Company for Medical Equipment Import.">جميع الحقوق محفوظة &copy; 2026 شركة رعاية المستقبل لاستيراد المعدات الطبية.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript للقائمة المتجاوبة -->
+    <!-- JavaScript للقائمة المتجاوبة وتبديل اللغة -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const mainNav = document.getElementById('mainNav');
         const navOverlay = document.getElementById('navOverlay');
         const navLinks = mainNav.querySelectorAll('a');
+        const langSwitch = document.getElementById('langSwitch');
+        const htmlElement = document.documentElement;
+
+        // حالة اللغة الحالية
+        let currentLang = localStorage.getItem('lang') || 'ar';
+
+        // تطبيق اللغة عند تحميل الصفحة
+        if (currentLang === 'en') {
+            switchToEnglish();
+        }
 
         // فتح/إغلاق القائمة
         menuToggle.addEventListener('click', function() {
@@ -1041,6 +1134,42 @@
                 document.body.style.overflow = '';
             });
         });
+
+        // تبديل اللغة
+        langSwitch.addEventListener('click', function() {
+            if (currentLang === 'ar') {
+                switchToEnglish();
+                currentLang = 'en';
+            } else {
+                switchToArabic();
+                currentLang = 'ar';
+            }
+            localStorage.setItem('lang', currentLang);
+        });
+
+        function switchToEnglish() {
+            htmlElement.setAttribute('lang', 'en');
+            htmlElement.setAttribute('dir', 'ltr');
+            langSwitch.querySelector('span').textContent = 'AR';
+            document.title = 'Future Care | Medical Equipment & Mother & Child Supplies';
+            
+            // تبديل النصوص
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-en');
+            });
+        }
+
+        function switchToArabic() {
+            htmlElement.setAttribute('lang', 'ar');
+            htmlElement.setAttribute('dir', 'rtl');
+            langSwitch.querySelector('span').textContent = 'EN';
+            document.title = 'رعاية المستقبل | لاستيراد المعدات الطبية ومستلزمات الأم والطفل';
+            
+            // تبديل النصوص
+            document.querySelectorAll('[data-ar]').forEach(el => {
+                el.textContent = el.getAttribute('data-ar');
+            });
+        }
     </script>
 
 </body>
